@@ -9,7 +9,7 @@
         "emitDecoratorMetadata": true,
         "noImplicitAny": true,
         "noEmitOnError": true,
-        "sourceMap": false,
+        "sourceMap": true,
         "removeComments": true,
         "outDir": "dist"
     },
