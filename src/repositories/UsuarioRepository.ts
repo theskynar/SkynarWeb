@@ -1,15 +1,6 @@
 import * as mongoose from "mongoose"
+import {IUsuarioEntity} from "../entitys/IUsuarioEntity"
 const Schema = mongoose.Schema
-
-export interface IUsuario extends mongoose.Document {
-    nome: String
-    nascimento: Date
-    genero: String
-
-    email: String
-    password: String
-    imagem: String
-}
 
 const schema = new Schema({
     nome: {
@@ -35,4 +26,4 @@ const schema = new Schema({
     imagem: String
 })
 
-export const UsuarioOdm = mongoose.model("Usuario", schema, "Usuarios")
+export const UsuarioOdm = mongoose.model<IUsuarioEntity>("Usuario", schema, "Usuarios")
