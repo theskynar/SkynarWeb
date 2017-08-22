@@ -1,16 +1,21 @@
-import {Container, Inject} from "typedi"
-import {HomeService} from "../../services/HomeService"
-import {Request, Response} from "express"
-import {Performance} from "../../interceptors/index"
+import { Inject } from "typedi"
+import { HomeService } from "../../services/HomeService"
+import { Request, Response } from "express"
+import { Http } from "../../interceptors"
 
 class HomeController {
 
     @Inject()
-    private _HomeService: HomeService
-
+    private _homeService: HomeService
+    
+    @Http.Get("/")
     render(req: Request, res: Response) {
-        setTimeout(()=> res.send(this._HomeService.say("hello world")), 5000000)
+        const self = this;
+        res.send(this._homeService.say("Hello!"))
+    }
+
+    @Http.Get("/test")
+    index(req: Request, res: Response) {
+        res.send("test")
     }
 }
-
-export let homeController = Container.get(HomeController)

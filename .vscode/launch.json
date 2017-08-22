@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch TypeScript",
+            "type": "node2",
+            "request": "launch",
+            "address": "localhost",
+            "cwd": "${workspaceRoot}",
+            "port": 5858,
+            "program": "${workspaceRoot}/src/server.ts",
+            "outFiles": [ "${workspaceRoot}/dist/**/*.js" ]
+        }
+    ]
+}
