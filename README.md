@@ -9,10 +9,10 @@ Versão Atual: 1.1
 
 ### How do I get set up? ###
 
-<code>
+```
 git clone
 npm install
-</code>
+```
 
 ##### se estiver usando vs code, va na aba debugging e de launch para debugar o TypeScript. #####
 ##### não esta utilizando: npm start. #####
