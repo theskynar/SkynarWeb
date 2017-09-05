@@ -7,7 +7,6 @@ import * as requireAll from "require-all";
 
 import {Config} from "./config/config";
 import {IConfig} from "./types/IConfig";
-const consign = require("consign");
 
 export class App {
   private app: express.Express;

@@ -3,14 +3,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const express = require("express");
+const requireAll = require("require-all");
 const config_1 = require("./config/config");
-const consign = require("consign");
 class App {
     constructor(config = {}) {
         this.config = new config_1.Config();
         Object.assign(this.config, config);
         this.Init();
-        consign().then('/dist/controllers');
+        requireAll({
+            dirname: __dirname + '/dist/controllers',
+            filter: /.+\.js$/,
+            recursive: true
+        });
     }
     Init() {
         this.app = App.expressApp;
