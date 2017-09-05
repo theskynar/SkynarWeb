@@ -17,7 +17,7 @@ export class App {
     Object.assign(this.config, config);
     this.Init();
     requireAll({
-      dirname     :  __dirname + '/dist/controllers',
+      dirname     :  __dirname + '/../../../dist/controllers',
       filter      :  /.+\.js$/,
       recursive   : true
     });
