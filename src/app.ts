@@ -16,8 +16,7 @@ export class App {
   constructor(config: IConfig = {}) {
     Object.assign(this.config, config);
     this.Init();
-    console.log(consign);
-    consign().include(`${process.execPath}/dist/controllers`).then();
+    consign().then('/dist/controllers');
   }
 
   private Init() {
