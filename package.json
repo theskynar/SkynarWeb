@@ -1,6 +1,6 @@
 {
   "name": "skynarweb",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "TypeScript web framework based in MVC applications using NodeJS.",
   "main": "dist/index.js",
   "types": "src/index.ts",
@@ -13,8 +13,7 @@
     "type": "git",
     "url": "https://github.com/MatheusBordin/SkynarWeb"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "@types/body-parser": "^1.16.3",
     "@types/cors": "^2.8.1",
