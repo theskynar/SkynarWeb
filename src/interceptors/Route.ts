@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { Container } from "typedi"
-import app from '../config/express'
+import { App } from '../index'
 
 
 export const Http = {
@@ -8,7 +8,7 @@ export const Http = {
     return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {          
         const self = Container.get(target.constructor)
 
-        app.get(path, descriptor.value.bind(self))
+        App.expressApp.get(path, descriptor.value.bind(self))
         return descriptor
     }
   },
@@ -16,7 +16,7 @@ export const Http = {
     return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
 
-        app.post(path, descriptor.value.bind(self))
+        App.expressApp.post(path, descriptor.value.bind(self))
         return descriptor
     }
   },
@@ -24,7 +24,7 @@ export const Http = {
       return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
 
-        app.put(path, descriptor.value.bind(self))
+        App.expressApp.put(path, descriptor.value.bind(self))
         return descriptor
       }
   },
@@ -32,7 +32,7 @@ export const Http = {
       return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
 
-        app.delete(path, descriptor.value.bind(self))
+        App.expressApp.delete(path, descriptor.value.bind(self))
         return descriptor
       }
   }
