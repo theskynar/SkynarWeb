@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "TypeScript web framework based in MVC applications using NodeJS.",
   "main": "dist/index.js",
+  "types": "src/index.ts",
   "scripts": {
     "build": "tsc -w"
   },
   "author": "Matheus Bordin",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MatheusBordin/SkynarWeb"
+  },
   "devDependencies": {
     "@types/body-parser": "^1.16.3",
     "@types/cors": "^2.8.1",
