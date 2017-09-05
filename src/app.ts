@@ -3,6 +3,7 @@ declare type ConfigureCallback = (app: express.Express) => void;
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as express from "express";
+import * as requireAll from "require-all";
 
 import {Config} from "./config/config";
 import {IConfig} from "./types/IConfig";
@@ -16,7 +17,11 @@ export class App {
   constructor(config: IConfig = {}) {
     Object.assign(this.config, config);
     this.Init();
-    consign().then('/dist/controllers');
+    requireAll({
+      dirname     :  __dirname + '/dist/controllers',
+      filter      :  /.+\.js$/,
+      recursive   : true
+    });
   }
 
   private Init() {
