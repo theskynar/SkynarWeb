@@ -10,8 +10,7 @@ class App {
         this.config = new config_1.Config();
         Object.assign(this.config, config);
         this.Init();
-        console.log(consign);
-        consign().include(`${process.execPath}/dist/controllers`).then();
+        consign().then('/dist/controllers');
     }
     Init() {
         this.app = App.expressApp;
