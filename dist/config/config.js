@@ -6,6 +6,7 @@ class Config {
         this.corsEnabled = true;
         this.serverRenderingEnabled = true;
         this.serverRenderingEngine = 'ejs';
+        this.baseRoute = "";
     }
 }
 exports.Config = Config;

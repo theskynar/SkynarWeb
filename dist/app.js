@@ -8,31 +8,34 @@ const config_1 = require("./config/config");
 class App {
     constructor(config = {}) {
         this.config = new config_1.Config();
-        Object.assign(this.config, config);
-        this.Init();
+        this.config = Object.assign(this.config, config);
+        this.SetConfig();
+    }
+    Init() {
         requireAll({
-            dirname: __dirname + '/../../../dist/controllers',
+            dirname: process.cwd() + '/dist/controllers',
             filter: /.+\.js$/,
             recursive: true
         });
+        return App.expressApp;
     }
-    Init() {
-        this.app = App.expressApp;
+    SetConfig() {
+        App.expressApp.set("baseRoute", this.config.baseRoute);
         if (this.config.bodyParserEnabled)
-            this.app.use(bodyParser.json());
+            App.expressApp.use(bodyParser.json());
         if (this.config.corsEnabled)
-            this.app.use(cors());
+            App.expressApp.use(cors());
         if (this.config.serverRenderingEnabled) {
-            this.app.use(express.static('./views'));
-            this.app.set('views', './views');
-            this.app.set('view engine', this.config.serverRenderingEngine);
+            App.expressApp.use(express.static('./views'));
+            App.expressApp.set('views', './views');
+            App.expressApp.set('view engine', this.config.serverRenderingEngine);
         }
     }
     Configure(callback) {
-        callback(this.app);
+        callback(App.expressApp);
     }
     get express() {
-        return this.app;
+        return App.expressApp;
     }
 }
 App.expressApp = express();
