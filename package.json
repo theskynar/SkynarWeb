@@ -1,6 +1,6 @@
 {
   "name": "skynarweb",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "description": "TypeScript web framework based in MVC applications using NodeJS.",
   "main": "dist/index.js",
   "types": "src/index.ts",
