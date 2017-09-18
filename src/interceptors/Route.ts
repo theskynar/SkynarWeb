@@ -8,7 +8,7 @@ function preparePath(path: string): string {
 }
 
 export const Http = {
-  Get: (path: string, ignore) => {
+  Get: (path: string, ignore?) => {
     return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {          
         const self = Container.get(target.constructor)
 
@@ -16,7 +16,7 @@ export const Http = {
         return descriptor
     }
   },
-  Post: (path: string, ignore) => {
+  Post: (path: string, ignore?) => {
     return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
 
@@ -24,7 +24,7 @@ export const Http = {
         return descriptor
     }
   },
-  Put: (path: string, ignore) => {
+  Put: (path: string, ignore?) => {
       return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
 
@@ -32,7 +32,7 @@ export const Http = {
         return descriptor
       }
   },
-  Delete: (path: string, ignore) => {
+  Delete: (path: string, ignore?) => {
       return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
 
