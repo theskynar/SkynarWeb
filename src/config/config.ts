@@ -7,4 +7,5 @@ export class Config implements IConfig {
   serverRenderingEnabled: Boolean = true;
   serverRenderingEngine: string = 'ejs';
   baseRoute: string = "";
+  exposedHeaders: string | Array<string> = "";
 }

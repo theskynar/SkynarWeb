@@ -5,4 +5,5 @@ export interface IConfig {
   serverRenderingEnabled?: Boolean;
   serverRenderingEngine?: string;
   baseRoute?: string;
+  exposedHeaders?: string | Array<string>;
 }

@@ -32,7 +32,9 @@ export class App {
     App.expressApp.set("baseRoute", this.config.baseRoute);
 
     if(this.config.bodyParserEnabled) App.expressApp.use(bodyParser.json());
-    if(this.config.corsEnabled) App.expressApp.use(cors());
+    if(this.config.corsEnabled) App.expressApp.use(cors({
+      exposedHeaders: this.config.exposedHeaders
+    }));
 
     if(this.config.serverRenderingEnabled){
       App.expressApp.use(express.static('./views'))

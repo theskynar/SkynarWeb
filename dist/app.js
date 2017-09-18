@@ -24,7 +24,9 @@ class App {
         if (this.config.bodyParserEnabled)
             App.expressApp.use(bodyParser.json());
         if (this.config.corsEnabled)
-            App.expressApp.use(cors());
+            App.expressApp.use(cors({
+                exposedHeaders: this.config.exposedHeaders
+            }));
         if (this.config.serverRenderingEnabled) {
             App.expressApp.use(express.static('./views'));
             App.expressApp.set('views', './views');

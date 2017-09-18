@@ -7,6 +7,7 @@ class Config {
         this.serverRenderingEnabled = true;
         this.serverRenderingEngine = 'ejs';
         this.baseRoute = "";
+        this.exposedHeaders = "";
     }
 }
 exports.Config = Config;
