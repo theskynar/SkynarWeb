@@ -8,35 +8,35 @@ function preparePath(path: string): string {
 }
 
 export const Http = {
-  Get: (path: string) => {
+  Get: (path: string, ignore) => {
     return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {          
         const self = Container.get(target.constructor)
 
-        App.expressApp.get(preparePath(path), descriptor.value.bind(self))
+        App.expressApp.get(ignore ? path : preparePath(path), descriptor.value.bind(self))
         return descriptor
     }
   },
-  Post: (path: string) => {
+  Post: (path: string, ignore) => {
     return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
 
-        App.expressApp.post(preparePath(path), descriptor.value.bind(self))
+        App.expressApp.post(ignore ? path : preparePath(path), descriptor.value.bind(self))
         return descriptor
     }
   },
-  Put: (path: string) => {
+  Put: (path: string, ignore) => {
       return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
 
-        App.expressApp.put(preparePath(path), descriptor.value.bind(self))
+        App.expressApp.put(ignore ? path : preparePath(path), descriptor.value.bind(self))
         return descriptor
       }
   },
-  Delete: (path: string) => {
+  Delete: (path: string, ignore) => {
       return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
 
-        App.expressApp.delete(preparePath(path), descriptor.value.bind(self))
+        App.expressApp.delete(ignore ? path : preparePath(path), descriptor.value.bind(self))
         return descriptor
       }
   }
