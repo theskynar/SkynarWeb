@@ -8,35 +8,39 @@ function preparePath(path: string): string {
 }
 
 export const Http = {
-  Get: (path: string, ignore?) => {
+  Get: (path: string, ignore = false) => {
     return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {          
         const self = Container.get(target.constructor)
+        const pathPrepared = ignore ? path : preparePath(path)
 
-        App.expressApp.get(ignore ? path : preparePath(path), descriptor.value.bind(self))
+        App.expressApp.get(pathPrepared, descriptor.value.bind(self))
         return descriptor
     }
   },
-  Post: (path: string, ignore?) => {
+  Post: (path: string, ignore = false) => {
     return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
+        const pathPrepared = ignore ? path : preparePath(path)
 
-        App.expressApp.post(ignore ? path : preparePath(path), descriptor.value.bind(self))
+        App.expressApp.post(pathPrepared, descriptor.value.bind(self))
         return descriptor
     }
   },
-  Put: (path: string, ignore?) => {
+  Put: (path: string, ignore = false) => {
       return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
+        const pathPrepared = ignore ? path : preparePath(path)
 
-        App.expressApp.put(ignore ? path : preparePath(path), descriptor.value.bind(self))
+        App.expressApp.put(pathPrepared, descriptor.value.bind(self))
         return descriptor
       }
   },
-  Delete: (path: string, ignore?) => {
+  Delete: (path: string, ignore = false) => {
       return function (target: any, propertyKey: any, descriptor: PropertyDescriptor) {
         const self = Container.get(target.constructor)
+        const pathPrepared = ignore ? path : preparePath(path)
 
-        App.expressApp.delete(ignore ? path : preparePath(path), descriptor.value.bind(self))
+        App.expressApp.delete(pathPrepared, descriptor.value.bind(self))
         return descriptor
       }
   }
