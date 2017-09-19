@@ -1,10 +1,10 @@
 import "reflect-metadata";
 
 import { Inject, Service } from "typedi";
-import { Config } from "./config/config";
+import { Config } from "./config/Config";
 import { Request, Response } from "express";
 import { Http } from "./interceptors/Route";
-import { App } from "./app";
+import { App } from "./App";
 
 export {
   App,
